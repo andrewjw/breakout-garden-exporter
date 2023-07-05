@@ -15,4 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.0.1"
+import unittest
+
+from breakoutgardenexporter import Metrics, COUNTER
+
+
+class TestMetrics(unittest.TestCase):
+    def test_create_and_set_metric(self):
+        metrics = Metrics()
+        metrics.add_metric("test_metric", COUNTER, "Test Metric")
+        metrics.set("test_metric", "tag=1", 1.0)
+
+        self.assertIn("test_metric{tag=1} 1.0", str(metrics))

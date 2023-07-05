@@ -15,14 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from breakoutgardenexporter import Metrics, SensorManager
+__version__ = "0.0.1"
 
-def main():
-    metrics = Metrics()
-
-    manager = SensorManager(metrics)
-
-    manager.run()
-
-if __name__ == "__main__":
-    main()
+from .icp10125 import ICP10125Sensor
+from .metrics import Metrics, MetricType, COUNTER, GAUGE
+from .sensor_manager import SensorManager

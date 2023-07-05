@@ -15,14 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from breakoutgardenexporter import Metrics, SensorManager
+from .metrics import Metrics
 
-def main():
-    metrics = Metrics()
 
-    manager = SensorManager(metrics)
+class Sensor:
+    def initialise(self, metrics: Metrics) -> bool:
+        raise NotImplementedError()  # pragma: no cover
 
-    manager.run()
-
-if __name__ == "__main__":
-    main()
+    def measure(self, metrics: Metrics) -> float:
+        raise NotImplementedError()  # pragma: no cover
