@@ -15,10 +15,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.0.1"
+import argparse
 
-from .arguments import get_arguments
-from .icp10125 import ICP10125Sensor
-from .metrics import Metrics, MetricType, COUNTER, GAUGE
-from .sensor_manager import SensorManager
-from .server import serve
+parser = argparse.ArgumentParser(
+    description='Exposes Prometheus metrics from sensors that are part '
+                + 'of Pimoroni\'s Breakout Garden family')
+parser.add_argument('-q', '--quiet', action="store_true",
+                    help="don't log HTTP requests")
+parser.add_argument('--bind', type=str, nargs='?', default="0.0.0.0:9101",
+                    help='the ip address and port to bind to. Default: *:9101')
+
+
+def get_arguments(args) -> argparse.Namespace:
+    args = parser.parse_args(args)
+
+    if ":" not in args.bind:
+        args.bind = (args.bind, 9101)
+    else:
+        args.bind = (args.bind.split(":")[0], int(args.bind.split(":")[1]))
+
+    return args

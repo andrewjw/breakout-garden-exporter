@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # breakout-garden-exporter
 # Copyright (C) 2023 Andrew Wilkinson
 #
@@ -14,7 +15,22 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .test_arguments import TestArguments
-from .test_icp10125 import TestICP10125
-from .test_metrics import TestMetrics
-from .test_sensor_manager import TestSensorManager
+import os
+import unittest
+
+from breakoutgardenexporter import get_arguments
+
+
+class TestArguments(unittest.TestCase):
+    def setUp(self):
+        os.environ = {}
+
+    def test_bind_without_port(self):
+        args = get_arguments(["--bind", "192.168.1.2"])
+        self.assertEqual("192.168.1.2", args.bind[0])
+        self.assertEqual(9101, args.bind[1])
+
+    def test_bind_with_port(self):
+        args = get_arguments(["--bind", "192.168.1.2:9020"])
+        self.assertEqual("192.168.1.2", args.bind[0])
+        self.assertEqual(9020, args.bind[1])
