@@ -42,6 +42,8 @@ class ICP10125Sensor(Sensor):
         assert self.sensor is not None, \
             "initialise must be called before measure."
         pressure, temperature = self.sensor.measure()
+        if pressure > 10000:
+            pressure /= 100
 
         metrics.set("bge_pressure", "sensor=\"icp10125\"", pressure)
         metrics.set("bge_temperature", "sensor=\"icp10125\"", temperature)

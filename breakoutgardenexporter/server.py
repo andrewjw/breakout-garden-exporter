@@ -28,6 +28,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.metrics = metrics
         self.quiet = quiet
 
+    def __call__(self, request, client_address, server):
+        super().__init__(request, client_address, server)
+
     def do_GET(self) -> None:
         if self.path == "/":
             self.send_index()
@@ -41,9 +44,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write("""
 <html>
-<head><title>RTL433 Prometheus</title></head>
+<head><title>Breakout Garden Exporter</title></head>
 <body>
-<h1>RTL433 Prometheus</h1>
+<h1>Breakout Garden Exporter</h1>
 <p><a href="/metrics">Metrics</a></p>
 </body>
 </html>""".encode("utf8"))
