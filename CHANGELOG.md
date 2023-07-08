@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2023-07-08)
+
+### Feature
+
+* Add command line options to readme. ([`01771cd`](https://github.com/andrewjw/breakout-garden-exporter/commit/01771cd9f7f5f24c76788f02d06253ea5cdc48f9))
+
 ## v0.1.0 (2023-07-08)
 
 ### Feature
