@@ -15,22 +15,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-import threading
+import unittest
 
-from breakoutgardenexporter import Metrics, SensorManager, get_arguments, serve
+from breakoutgardenexporter import Metrics, COUNTER
 
-def main() -> None:
-    args = get_arguments(sys.argv[1:])
 
-    metrics = Metrics()
+class TestMetrics(unittest.TestCase):
+    def test_create_and_set_metric(self):
+        metrics = Metrics()
+        metrics.add_metric("test_metric", COUNTER, "Test Metric")
+        metrics.set("test_metric", "tag=1", 1.0)
 
-    manager = SensorManager(metrics)
-
-    server_thread = threading.Thread(target=serve, args=(metrics, args))
-    server_thread.start()
-
-    manager.run()
-
-if __name__ == "__main__":
-    main()
+        self.assertIn("test_metric{tag=1} 1.0", str(metrics))

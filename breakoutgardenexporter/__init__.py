@@ -15,22 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-import threading
+__version__ = "0.0.1"
 
-from breakoutgardenexporter import Metrics, SensorManager, get_arguments, serve
-
-def main() -> None:
-    args = get_arguments(sys.argv[1:])
-
-    metrics = Metrics()
-
-    manager = SensorManager(metrics)
-
-    server_thread = threading.Thread(target=serve, args=(metrics, args))
-    server_thread.start()
-
-    manager.run()
-
-if __name__ == "__main__":
-    main()
+from .arguments import get_arguments
+from .icp10125 import ICP10125Sensor
+from .metrics import Metrics, MetricType, COUNTER, GAUGE
+from .sensor_manager import SensorManager
+from .server import serve

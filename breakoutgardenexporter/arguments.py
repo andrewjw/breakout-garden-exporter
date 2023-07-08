@@ -15,22 +15,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-import threading
+import argparse
 
-from breakoutgardenexporter import Metrics, SensorManager, get_arguments, serve
+parser = argparse.ArgumentParser(
+    description='Exposes Prometheus metrics from sensors that are part '
+                + 'of Pimoroni\'s Breakout Garden family')
+parser.add_argument('-q', '--quiet', action="store_true",
+                    help="don't log HTTP requests")
+parser.add_argument('--bind', type=str, nargs='?', default="0.0.0.0:9101",
+                    help='the ip address and port to bind to. Default: *:9101')
 
-def main() -> None:
-    args = get_arguments(sys.argv[1:])
 
-    metrics = Metrics()
+def get_arguments(args) -> argparse.Namespace:
+    args = parser.parse_args(args)
 
-    manager = SensorManager(metrics)
+    if ":" not in args.bind:
+        args.bind = (args.bind, 9101)
+    else:
+        args.bind = (args.bind.split(":")[0], int(args.bind.split(":")[1]))
 
-    server_thread = threading.Thread(target=serve, args=(metrics, args))
-    server_thread.start()
-
-    manager.run()
-
-if __name__ == "__main__":
-    main()
+    return args
