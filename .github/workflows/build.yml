@@ -64,6 +64,6 @@ jobs:
           git config --global user.name "Andrew Wilkinson"
           export VERSION=$(semantic-release print-version)
           if [ ! -z "$VERSION" ]; then
-             GH_TOKEN=${{ secrets.GITHUB_TOKEN }} PYPI_TOKEN=${{ secrets.PYPI_TOKEN }} semantic-release publish
+             GH_TOKEN=${{ secrets.GITHUB_TOKEN }} REPOSITORY_USERNAME=__token__ REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}" semantic-release publish
           fi
  
