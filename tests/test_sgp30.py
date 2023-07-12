@@ -21,6 +21,7 @@ from unittest.mock import patch, Mock
 
 from breakoutgardenexporter import SGP30Sensor, Metrics
 
+
 class MockSGP30Reading:
     def __init__(self, co2, voc) -> None:
         self.equivalent_co2 = co2
@@ -32,7 +33,8 @@ class TestSGP30(unittest.TestCase):
     def test_create_sensor(self, mock_sgp30):
         instance = Mock()
         mock_sgp30.return_value = instance
-        instance.get_air_quality.side_effect = [MockSGP30Reading(400, 0), MockSGP30Reading(405, 5)]
+        instance.get_air_quality.side_effect = \
+            [MockSGP30Reading(400, 0), MockSGP30Reading(405, 5)]
 
         metrics = Metrics()
         sensor = SGP30Sensor()
