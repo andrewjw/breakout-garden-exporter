@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2023-07-13)
+
+### Feature
+
+* Add support for the SGP30 air quality sensor. ([`2b8584f`](https://github.com/andrewjw/breakout-garden-exporter/commit/2b8584f5b2bbffbeba6e00f957c0cca8af5b1866))
+
 ## v0.2.0 (2023-07-08)
 
 ### Feature
