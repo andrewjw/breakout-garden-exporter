@@ -47,3 +47,13 @@ class TestSGP30(unittest.TestCase):
             "bge_equivalent_co2{sensor=\"sgp30\"} 405.000000", str(metrics))
         self.assertIn(
             "bge_voc{sensor=\"sgp30\"} 5.000000", str(metrics))
+
+    @patch("breakoutgardenexporter.sgp30.SGP30")
+    def test_missing_sensor(self, mock_sgp30):
+        instance = Mock()
+        mock_sgp30.side_effect = RuntimeError
+
+        metrics = Metrics()
+        sensor = SGP30Sensor()
+
+        self.assertFalse(sensor.initialise(metrics))
