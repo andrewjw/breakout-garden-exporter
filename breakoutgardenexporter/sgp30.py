@@ -32,7 +32,7 @@ class SGP30Sensor(Sensor):
     def initialise(self, metrics: Metrics) -> bool:
         try:
             self.sensor = SGP30()
-        except RuntimeError:
+        except (RuntimeError, FileNotFoundError):
             return False
         else:
             self.sensor.command('init_air_quality')
