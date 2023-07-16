@@ -18,7 +18,10 @@
 from typing import Optional
 
 from smbus2 import SMBus
-from bme280 import BME280
+try:
+    from bme280 import BME280
+except OSError:
+    pass
 
 from .metrics import Metrics, GAUGE
 from .sensor import Sensor
@@ -30,7 +33,8 @@ class BME280Sensor(Sensor):
 
     def initialise(self, metrics: Metrics) -> bool:
         try:
-            self.sensor = BME280(ic2_dev=SMBus(1))
+            self.sensor = BME280(i2c_dev=SMBus(1))
+            self.sensor.setup()
         except RuntimeError:
             return False
         else:

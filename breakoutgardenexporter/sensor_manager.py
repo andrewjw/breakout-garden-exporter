@@ -19,13 +19,13 @@ import time
 import threading
 from typing import Dict
 
-from .bme280 import BME280
+from .bme280 import BME280Sensor
 from .icp10125 import ICP10125Sensor
 from .metrics import Metrics
 from .sensor import Sensor
 from .sgp30 import SGP30Sensor
 
-SENSORS = [BME280, ICP10125Sensor, SGP30Sensor]
+SENSORS = [BME280Sensor, ICP10125Sensor, SGP30Sensor]
 
 
 class SensorManager(threading.Thread):
