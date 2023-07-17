@@ -32,10 +32,10 @@ class SGP30Sensor(Sensor):
     def initialise(self, metrics: Metrics) -> bool:
         try:
             self.sensor = SGP30()
-        except RuntimeError:
+            self.sensor.command('init_air_quality')
+        except OSError:
             return False
         else:
-            self.sensor.command('init_air_quality')
             metrics.add_metric("bge_equivalent_co2",
                                GAUGE,
                                "The equivalent co2 (ppm)")
