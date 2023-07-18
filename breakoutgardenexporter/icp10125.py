@@ -30,7 +30,7 @@ class ICP10125Sensor(Sensor):
     def initialise(self, metrics: Metrics) -> bool:
         try:
             self.sensor = ICP10125()
-        except RuntimeError:
+        except (RuntimeError, OSError):
             return False
         else:
             metrics.add_metric("bge_pressure", GAUGE, "The air pressure")
