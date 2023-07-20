@@ -15,7 +15,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from .test_arguments import TestArguments
-from .test_bme280 import TestBME280
 from .test_icp10125 import TestICP10125
 from .test_metrics import TestMetrics
 from .test_sensor_manager import TestSensorManager

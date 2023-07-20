@@ -51,7 +51,7 @@ class TestSGP30(unittest.TestCase):
     @patch("breakoutgardenexporter.sgp30.SGP30")
     def test_missing_sensor(self, mock_sgp30):
         instance = Mock()
-        mock_sgp30.side_effect = OSError
+        mock_sgp30.side_effect = RuntimeError
 
         metrics = Metrics()
         sensor = SGP30Sensor()
