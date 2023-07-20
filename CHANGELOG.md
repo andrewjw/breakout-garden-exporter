@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2023-07-16)
+
+### Fix
+
+* Handle an error when no i2c interface is found. ([`27c4776`](https://github.com/andrewjw/breakout-garden-exporter/commit/27c4776ca1fbe375d4000fcdd3138ac0452f9438))
+
 ## v0.3.0 (2023-07-13)
 
 ### Feature
