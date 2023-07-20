@@ -19,41 +19,39 @@ from typing import cast, Optional
 import unittest
 from unittest.mock import patch, Mock
 
-from breakoutgardenexporter import SGP30Sensor, Metrics
+from breakoutgardenexporter import BME280Sensor, Metrics
 
 
-class MockSGP30Reading:
-    def __init__(self, co2, voc) -> None:
-        self.equivalent_co2 = co2
-        self.total_voc = voc
-
-
-class TestSGP30(unittest.TestCase):
-    @patch("breakoutgardenexporter.sgp30.SGP30")
-    def test_create_sensor(self, mock_sgp30):
+class TestBME280(unittest.TestCase):
+    @patch("breakoutgardenexporter.bme280.BME280")
+    @patch("breakoutgardenexporter.bme280.SMBus")
+    def test_create_sensor(self, mock_smbus, mock_bme280):
         instance = Mock()
-        mock_sgp30.return_value = instance
-        instance.get_air_quality.side_effect = \
-            [MockSGP30Reading(400, 0), MockSGP30Reading(405, 5)]
+        mock_bme280.return_value = instance
+        instance.get_temperature.return_value = 20.0
+        instance.get_pressure.return_value = 1000
+        instance.get_humidity.return_value = 65
 
         metrics = Metrics()
-        sensor = SGP30Sensor()
+        sensor = BME280Sensor()
 
         self.assert_(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
-        self.assertEqual(sensor.measure(metrics), 1.0)
         self.assertIn(
-            "bge_equivalent_co2{sensor=\"sgp30\"} 405.000000", str(metrics))
+            "bge_pressure{sensor=\"bme280\"} 1000.000000", str(metrics))
         self.assertIn(
-            "bge_voc{sensor=\"sgp30\"} 5.000000", str(metrics))
+            "bge_temperature{sensor=\"bme280\"} 20.000000", str(metrics))
+        self.assertIn(
+            "bge_humidity{sensor=\"bme280\"} 65.000000", str(metrics))
 
-    @patch("breakoutgardenexporter.sgp30.SGP30")
-    def test_missing_sensor(self, mock_sgp30):
+    @patch("breakoutgardenexporter.bme280.BME280")
+    @patch("breakoutgardenexporter.bme280.SMBus")
+    def test_missing_sensor(self, mock_bme280, mock_smbus):
         instance = Mock()
-        mock_sgp30.side_effect = OSError
+        mock_bme280.side_effect = RuntimeError
 
         metrics = Metrics()
-        sensor = SGP30Sensor()
+        sensor = BME280Sensor()
 
         self.assertFalse(sensor.initialise(metrics))

@@ -18,6 +18,7 @@
 __version__ = "0.3.1"
 
 from .arguments import get_arguments
+from .bme280 import BME280Sensor
 from .icp10125 import ICP10125Sensor
 from .metrics import Metrics, MetricType, COUNTER, GAUGE
 from .sensor_manager import SensorManager

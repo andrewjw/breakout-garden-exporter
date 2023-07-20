@@ -17,50 +17,50 @@
 
 from typing import Optional
 
-from sgp30 import SGP30
+from smbus2 import SMBus
+try:
+    from bme280 import BME280
+except OSError:
+    pass
 
 from .metrics import Metrics, GAUGE
 from .sensor import Sensor
 
 
-class SGP30Sensor(Sensor):
+class BME280Sensor(Sensor):
     def __init__(self) -> None:
-        self.sensor: Optional[SGP30] = None
-        self.warmed_up: bool = False
-        self.initial_readings: int = 0
+        self.sensor: Optional[BME280] = None
 
     def initialise(self, metrics: Metrics) -> bool:
         try:
-            self.sensor = SGP30()
-            self.sensor.command('init_air_quality')
-        except OSError:
+            self.sensor = BME280(i2c_dev=SMBus(1))
+            self.sensor.setup()
+        except RuntimeError:
             return False
         else:
-            metrics.add_metric("bge_equivalent_co2",
-                               GAUGE,
-                               "The equivalent co2 (ppm)")
-            metrics.add_metric("bge_voc",
-                               GAUGE,
-                               "The total VOC (ppb)")
+            metrics.add_metric("bge_pressure", GAUGE, "The air pressure")
+            metrics.add_metric("bge_temperature", GAUGE, "The temperature")
+            metrics.add_metric("bge_humidity", GAUGE, "The humidity")
 
             return True
 
     def measure(self, metrics: Metrics) -> float:
         assert self.sensor is not None, \
             "initialise must be called before measure."
-        result = self.sensor.get_air_quality()
 
-        if result.equivalent_co2 != 400 \
-           or result.total_voc != 0 \
-           or self.initial_readings >= 20:
-            self.warmed_up = True
+        temperature = self.sensor.get_temperature()
+        pressure = self.sensor.get_pressure()
+        humidity = self.sensor.get_humidity()
+        print(temperature, pressure, humidity)
 
-        if self.warmed_up:
-            metrics.set("bge_equivalent_co2",
-                        "sensor=\"sgp30\"",
-                        result.equivalent_co2)
-            metrics.set("bge_voc", "sensor=\"sgp30\"", result.total_voc)
-        else:
-            self.initial_readings += 1
+        metrics.set("bge_temperature",
+                    "sensor=\"bme280\"",
+                    temperature)
+        metrics.set("bge_pressure",
+                    "sensor=\"bme280\"",
+                    pressure)
+        metrics.set("bge_humidity",
+                    "sensor=\"bme280\"",
+                    humidity)
 
         return 1.0
