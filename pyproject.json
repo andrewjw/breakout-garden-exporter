@@ -71,6 +71,9 @@
                 "dist/*"
             ],
             "upload_to_vcs_release": true
-        }
+        },
+        "version_variable": [
+            "breakoutgardenexporter/__init__.py:__version__"
+        ]
     }
 }
