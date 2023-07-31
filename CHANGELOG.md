@@ -2,6 +2,13 @@
 
 
 
+## v0.4.5 (2023-07-31)
+
+### Fix
+
+* fix: Correct GitHub token ([`42b14ed`](https://github.com/andrewjw/breakout-garden-exporter/commit/42b14edab609ab8402087fcd5b8ffee1c80b5c38))
+
+
 ## v0.4.4 (2023-07-31)
 
 ### Fix
