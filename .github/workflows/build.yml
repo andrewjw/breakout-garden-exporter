@@ -66,6 +66,10 @@ jobs:
           echo $VERSION
           if [ ! -z "$VERSION" ]; then
              echo "Attempting release..."
-             GH_TOKEN=${{ secrets.GITHUB_TOKEN }} REPOSITORY_USERNAME=__token__ REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}" semantic-release publish
+             export GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+             export REPOSITORY_USERNAME=__token__
+             export REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}"
+             semantic-release version
+             semantic-release publish
           fi
  
