@@ -2,6 +2,13 @@
 
 
 
+## v0.4.1 (2023-07-31)
+
+### Fix
+
+* fix: Run build commands to produce artifacts ([`7675f2a`](https://github.com/andrewjw/breakout-garden-exporter/commit/7675f2a39f74895d9fd38c63c83e4dc6d9ec65ae))
+
+
 ## v0.4.0 (2023-07-31)
 
 ### Chore
