@@ -2,6 +2,17 @@
 
 
 
+## v0.4.2 (2023-07-31)
+
+### Chore
+
+* chore: Allow wheels to be built. ([`19c56d1`](https://github.com/andrewjw/breakout-garden-exporter/commit/19c56d1d49743df16ae40c5f48e4a57abd163c27))
+
+### Fix
+
+* fix: Pass config to semantic-release ([`86be6cd`](https://github.com/andrewjw/breakout-garden-exporter/commit/86be6cd4ac7f851fd87871d4a2fff92eda413b68))
+
+
 ## v0.4.1 (2023-07-31)
 
 ### Fix
