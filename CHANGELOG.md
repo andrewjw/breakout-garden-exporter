@@ -2,6 +2,13 @@
 
 
 
+## v0.4.3 (2023-07-31)
+
+### Fix
+
+* fix: Tell semantic-release to update the version variable. ([`faedd07`](https://github.com/andrewjw/breakout-garden-exporter/commit/faedd07902e328143fda17d51820a7b11cc0e36e))
+
+
 ## v0.4.2 (2023-07-31)
 
 ### Chore
