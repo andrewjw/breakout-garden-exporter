@@ -2,6 +2,13 @@
 
 
 
+## v0.4.4 (2023-07-31)
+
+### Fix
+
+* fix: Typo in semantic-release config. ([`f834033`](https://github.com/andrewjw/breakout-garden-exporter/commit/f8340333e9c81e7e4fdaf9ef66c12e51f4b3de91))
+
+
 ## v0.4.3 (2023-07-31)
 
 ### Fix
