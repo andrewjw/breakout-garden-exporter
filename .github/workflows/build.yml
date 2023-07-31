@@ -62,14 +62,14 @@ jobs:
         run: |
           git config --global user.email "andrewjwilkinson@gmail.com"
           git config --global user.name "Andrew Wilkinson"
-          export VERSION=$(semantic-release --noop version --print)
+          export VERSION=$(semantic-release -c pyproject.json --noop version --print)
           echo $VERSION
           if [ ! -z "$VERSION" ]; then
              echo "Attempting release..."
              export GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
              export REPOSITORY_USERNAME=__token__
              export REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}"
-             semantic-release version
-             semantic-release publish
+             semantic-release -c pyproject.json version
+             semantic-release -c pyproject.json publish
           fi
  
