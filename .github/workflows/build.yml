@@ -66,7 +66,7 @@ jobs:
           echo $VERSION
           if [ ! -z "$VERSION" ]; then
              echo "Attempting release..."
-             export GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+             export GH_TOKEN=${{ github.token }}
              export REPOSITORY_USERNAME=__token__
              export REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}"
              semantic-release -c pyproject.json version
