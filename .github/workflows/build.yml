@@ -62,14 +62,12 @@ jobs:
         run: |
           git config --global user.email "andrewjwilkinson@gmail.com"
           git config --global user.name "Andrew Wilkinson"
+
           export VERSION=$(semantic-release -c pyproject.json --noop version --print)
-          echo $VERSION
-          if [ ! -z "$VERSION" ]; then
-             echo "Attempting release..."
-             export GH_TOKEN=${{ github.token }}
-             export REPOSITORY_USERNAME=__token__
-             export REPOSITORY_PASSWORD="${{ secrets.PYPI_TOKEN }}"
-             semantic-release -c pyproject.json version
-             semantic-release -c pyproject.json publish
+          GH_TOKEN=${{ secrets.GITHUB_TOKEN }} semantic-release -c pyproject.json version
+          if [ -d "dist/" ]; then
+            twine check dist/*
+            TWINE_USERNAME=__token__ TWINE_PASSWORD=${{ secrets.PYPI_TOKEN }} twine upload dist/*
+            GH_TOKEN=${{ secrets.GITHUB_TOKEN }} semantic-release -c pyproject.json publish
           fi
  
