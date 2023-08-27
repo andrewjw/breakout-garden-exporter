@@ -1,7 +1,7 @@
 # breakout-garden-exporter
 
 [![Pipeline](https://github.com/andrewjw/breakout-garden-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/andrewjw/breakout-garden-exporter/actions/workflows/build.yml)
-[![PyPI](https://img.shields.io/pypi/v/breakout-garden-exporter)(https://pypi.org/project/breakout-garden-exporter/)
+[![PyPI](https://img.shields.io/pypi/v/breakout-garden-exporter)](https://pypi.org/project/breakout-garden-exporter/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/glowprom)](https://pypi.org/project/breakout-garden-exporter/)
 [![Coverage Status](https://coveralls.io/repos/github/andrewjw/breakout-garden-exporter/badge.svg?branch=main)](https://coveralls.io/github/andrewjw/breakout-garden-exporter?branch=master)
 
