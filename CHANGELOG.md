@@ -2,6 +2,33 @@
 
 
 
+## v0.4.6 (2023-08-27)
+
+### Chore
+
+* chore(deps): update dependency python-semantic-release to v8.0.8 ([`2e7810c`](https://github.com/andrewjw/breakout-garden-exporter/commit/2e7810c7efa119c66d26f83691d634b3c8ea0342))
+
+* chore(deps): update dependency smbus2 to v0.4.3 ([`88ba674`](https://github.com/andrewjw/breakout-garden-exporter/commit/88ba6746055868db7ae792ea184c159d68e34432))
+
+* chore(deps): update dependency wheel to v0.41.2 ([`f19c79b`](https://github.com/andrewjw/breakout-garden-exporter/commit/f19c79bc9628a98f78bcacc4aa140eb5c438a071))
+
+* chore(deps): update dependency python-semantic-release to v8.0.7 ([`51064b4`](https://github.com/andrewjw/breakout-garden-exporter/commit/51064b4798b9cf645af21c1ec773518773bec94a))
+
+* chore(deps): update dependency mypy to v1.5.1 ([`8c03659`](https://github.com/andrewjw/breakout-garden-exporter/commit/8c03659670d76581031db4f84638b6a9668861fd))
+
+* chore(deps): update dependency python-semantic-release to v8.0.6 ([`4bf93fa`](https://github.com/andrewjw/breakout-garden-exporter/commit/4bf93fa48b759cfdb7e6f38a5226febb598a1833))
+
+* chore(deps): update dependency python-semantic-release to v8.0.5 ([`600f7ef`](https://github.com/andrewjw/breakout-garden-exporter/commit/600f7ef041616c7143193f38ccb4029bf261e062))
+
+* chore(deps): update dependency mypy to v1.5.0 ([`881e243`](https://github.com/andrewjw/breakout-garden-exporter/commit/881e2432c49ce5ba503b638747cbf4536fe44ceb))
+
+* chore(deps): update dependency wheel to v0.41.1 ([`1f91670`](https://github.com/andrewjw/breakout-garden-exporter/commit/1f916701796f4a0784134377d6eb37a0b63095f3))
+
+### Fix
+
+* fix: Fix releases with semantic-release v8. ([`afa307f`](https://github.com/andrewjw/breakout-garden-exporter/commit/afa307fdc323cda325ff5dc0ba5a3f2294588980))
+
+
 ## v0.4.5 (2023-07-31)
 
 ### Fix
