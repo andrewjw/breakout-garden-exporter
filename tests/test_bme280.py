@@ -35,7 +35,7 @@ class TestBME280(unittest.TestCase):
         metrics = Metrics()
         sensor = BME280Sensor()
 
-        self.assert_(sensor.initialise(metrics))
+        self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
         self.assertIn(

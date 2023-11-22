@@ -39,7 +39,7 @@ class TestSGP30(unittest.TestCase):
         metrics = Metrics()
         sensor = SGP30Sensor()
 
-        self.assert_(sensor.initialise(metrics))
+        self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
         self.assertEqual(sensor.measure(metrics), 1.0)

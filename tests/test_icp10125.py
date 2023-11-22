@@ -32,7 +32,7 @@ class TestICP10125(unittest.TestCase):
         metrics = Metrics()
         sensor = ICP10125Sensor()
 
-        self.assert_(sensor.initialise(metrics))
+        self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
         self.assertIn(
