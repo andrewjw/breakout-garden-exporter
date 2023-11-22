@@ -2,6 +2,51 @@
 
 
 
+## v0.5.0 (2023-11-22)
+
+### Chore
+
+* chore(deps): update dependency mypy to v1.7.0 ([`d599ad0`](https://github.com/andrewjw/breakout-garden-exporter/commit/d599ad01014c22a5b22df3ce8139d5d46a1a18eb))
+
+* chore(deps): update dependency wheel to v0.41.3 ([`c7a4c7a`](https://github.com/andrewjw/breakout-garden-exporter/commit/c7a4c7ad6ea6ef60b426a8ed0f4a6e9589b21e47))
+
+* chore(deps): update dependency python-semantic-release to v8.3.0 ([`3338cee`](https://github.com/andrewjw/breakout-garden-exporter/commit/3338ceec012588c59fb9d26bcbbb98af2e6312da))
+
+* chore(deps): update dependency python-semantic-release to v8.2.0 ([`979bd47`](https://github.com/andrewjw/breakout-garden-exporter/commit/979bd4726d67974c3d8981ffd3580aa478f39ffc))
+
+* chore(deps): update dependency mypy to v1.6.1 ([`0f8c5db`](https://github.com/andrewjw/breakout-garden-exporter/commit/0f8c5db40a34b35618a6e6fa9652abae0ba1bc67))
+
+* chore(deps): update dependency python-semantic-release to v8.1.2 ([`faeac61`](https://github.com/andrewjw/breakout-garden-exporter/commit/faeac613f5e9d6ae6e6d45134259f34cded8928e))
+
+* chore(deps): update dependency pycodestyle to v2.11.1 ([`7ffcc4a`](https://github.com/andrewjw/breakout-garden-exporter/commit/7ffcc4a165e0b6394bd31a01c451882cefbf9167))
+
+* chore(deps): update dependency mypy to v1.6.0 ([`e64fb0d`](https://github.com/andrewjw/breakout-garden-exporter/commit/e64fb0d38ec65db8b7e476e7ee9db8515d9b8fd4))
+
+* chore(deps): update dependency python-semantic-release to v8.1.1 ([`71f72be`](https://github.com/andrewjw/breakout-garden-exporter/commit/71f72bedb49d4360e745bbeb487b7100fd97203c))
+
+* chore(deps): update actions/checkout action to v4 ([`a2dc402`](https://github.com/andrewjw/breakout-garden-exporter/commit/a2dc4024ce3e4766cc274654929f4f9e3a747d05))
+
+* chore: Fix typo. ([`3def9fe`](https://github.com/andrewjw/breakout-garden-exporter/commit/3def9fe4a1f1a3f1d6b2b476ac8cbfb706580475))
+
+* chore: Add link to PyPI ([`cc8cce6`](https://github.com/andrewjw/breakout-garden-exporter/commit/cc8cce62566bacdc68ef8d0a3feb09ee23f20ffd))
+
+* chore: Add download stats badge to readme. ([`08c0027`](https://github.com/andrewjw/breakout-garden-exporter/commit/08c00279ef71785efe98c4993f95295085a3c4f1))
+
+### Feature
+
+* feat: Add support for Python 3.12. ([`538245b`](https://github.com/andrewjw/breakout-garden-exporter/commit/538245b4ad8116744b38548f83429012f784cdef))
+
+### Fix
+
+* fix: Fix tests on Python 3.12. ([`076631e`](https://github.com/andrewjw/breakout-garden-exporter/commit/076631ecdd0826f449514369ae5fc773ed6c104f))
+
+### Unknown
+
+* Merge pull request #21 from andrewjw/renovate/actions-checkout-4.x
+
+chore(deps): update actions/checkout action to v4 ([`fd010f5`](https://github.com/andrewjw/breakout-garden-exporter/commit/fd010f53c92e6f795ebfa2c7c7875572443f5874))
+
+
 ## v0.4.6 (2023-08-27)
 
 ### Chore
