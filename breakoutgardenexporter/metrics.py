@@ -47,6 +47,12 @@ class Metric:
     def set(self, tags: str, value: float) -> None:
         self.values[tags] = value
 
+    def clear(self, tags: str) -> None:
+        try:
+            del self.values[tags]
+        except KeyError:
+            pass
+
     def __str__(self) -> str:
         r: List[str] = []
         for tags, value in self.values.items():
@@ -68,6 +74,12 @@ class Metrics:
 
     def set(self, metric_name: str, tags: str, value: float) -> None:
         self.metrics[metric_name].set(tags, value)
+
+    def clear(self, metric_name: str, tags: str) -> None:
+        try:
+            self.metrics[metric_name].clear(tags)
+        except KeyError:
+            pass
 
     def __str__(self) -> str:
         return "\n".join(map(str, self.metrics.values()))

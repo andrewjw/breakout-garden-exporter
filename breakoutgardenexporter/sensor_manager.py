@@ -22,10 +22,11 @@ from typing import Dict
 from .bme280 import BME280Sensor
 from .icp10125 import ICP10125Sensor
 from .metrics import Metrics
+from .pm25 import PM25Sensor
 from .sensor import Sensor
 from .sgp30 import SGP30Sensor
 
-SENSORS = [BME280Sensor, ICP10125Sensor, SGP30Sensor]
+SENSORS = [BME280Sensor, ICP10125Sensor, PM25Sensor, SGP30Sensor]
 
 
 class SensorManager(threading.Thread):

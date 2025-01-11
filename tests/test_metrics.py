@@ -27,3 +27,14 @@ class TestMetrics(unittest.TestCase):
         metrics.set("test_metric", "tag=1", 1.0)
 
         self.assertIn("test_metric{tag=1} 1.0", str(metrics))
+
+    def test_clear_metric(self):
+        metrics = Metrics()
+        metrics.add_metric("test_metric", COUNTER, "Test Metric")
+        metrics.set("test_metric", "tag=1", 1.0)
+        metrics.clear("test_metric", "tag=1")
+
+        self.assertNotIn("test_metric{tag=1} 1.0", str(metrics))
+
+        # Check double clears don't fail.
+        metrics.clear("test_metric", "tag=1")
