@@ -21,6 +21,10 @@ from unittest.mock import patch, Mock
 
 from breakoutgardenexporter import PM25Sensor, Metrics
 
+import board
+
+
+print(board)
 
 SAMPLE_DATA = {'pm10 standard': 2,
                'pm25 standard': 3,
@@ -34,10 +38,6 @@ SAMPLE_DATA = {'pm10 standard': 2,
                'particles 25um': 2,
                'particles 50um': 0,
                'particles 100um': 0}
-
-
-import board
-print(board)
 
 
 class TestPM25(unittest.TestCase):
