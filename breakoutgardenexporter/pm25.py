@@ -85,7 +85,6 @@ class PM25Sensor(Sensor):
             metrics.set("bge_airqual_standard",
                         f"sensor=\"pm25\",psize=\"{psize[0]}\"",
                         aqdata[f"pm{psize[1]} standard"])
-            print("standard", psize, aqdata[f"pm{psize[1]} standard"])
             metrics.set("bge_airqual_environmental",
                         f"sensor=\"pm25\",psize=\"{psize[0]}\"",
                         aqdata[f"pm{psize[1]} env"])
