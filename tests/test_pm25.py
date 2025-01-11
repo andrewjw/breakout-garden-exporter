@@ -21,7 +21,7 @@ from unittest.mock import patch, Mock
 
 from breakoutgardenexporter import PM25Sensor, Metrics
 
-import board
+import board  # type: ignore
 
 
 print(board)
