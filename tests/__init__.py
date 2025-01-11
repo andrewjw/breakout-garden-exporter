@@ -18,5 +18,6 @@ from .test_arguments import TestArguments
 from .test_bme280 import TestBME280
 from .test_icp10125 import TestICP10125
 from .test_metrics import TestMetrics
+from .test_pm25 import TestPM25
 from .test_sensor_manager import TestSensorManager
 from .test_sgp30 import TestSGP30
