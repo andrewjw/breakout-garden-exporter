@@ -36,6 +36,10 @@ SAMPLE_DATA = {'pm10 standard': 2,
                'particles 100um': 0}
 
 
+import board
+print(board)
+
+
 class TestPM25(unittest.TestCase):
     @patch("breakoutgardenexporter.pm25.PM25_I2C")
     @patch("breakoutgardenexporter.pm25.busio.I2C")
