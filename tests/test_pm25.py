@@ -24,7 +24,7 @@ from breakoutgardenexporter import PM25Sensor, Metrics
 import breakoutgardenexporter.pm25
 
 if not hasattr(breakoutgardenexporter.pm25.board, "SCL"):
-    breakoutgardenexporter.pm25..SCL = 0
+    breakoutgardenexporter.pm25.board.SCL = 0
 
 SAMPLE_DATA = {'pm10 standard': 2,
                'pm25 standard': 3,
