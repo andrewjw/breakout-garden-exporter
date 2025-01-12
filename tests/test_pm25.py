@@ -21,10 +21,13 @@ from unittest.mock import patch, Mock
 
 from breakoutgardenexporter import PM25Sensor, Metrics
 
-import board  # type: ignore
-
-
-print(board)
+try:
+    import board  # type: ignore
+except NotImplementedError:
+    pass
+else:
+    if not hasattr(board, "SCL"):
+        board.SCL = 0
 
 SAMPLE_DATA = {'pm10 standard': 2,
                'pm25 standard': 3,
