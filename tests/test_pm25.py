@@ -23,8 +23,11 @@ from breakoutgardenexporter import PM25Sensor, Metrics
 
 import breakoutgardenexporter.pm25
 
+# Needed to fix tests in GitHub actions.
 if not hasattr(breakoutgardenexporter.pm25.board, "SCL"):
     breakoutgardenexporter.pm25.board.SCL = 0
+if not hasattr(breakoutgardenexporter.pm25.board, "SCA"):
+    breakoutgardenexporter.pm25.board.SCA = 0
 
 SAMPLE_DATA = {'pm10 standard': 2,
                'pm25 standard': 3,
