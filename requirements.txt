@@ -1,7 +1,7 @@
 pycodestyle==2.13.0
 coveralls==4.0.1
 python-semantic-release==10.0.2
-mypy==1.14.1
+mypy==1.16.0
 icp10125==1.0.0
 pimoroni-sgp30==0.0.2
 pimoroni-bme280==1.0.0
