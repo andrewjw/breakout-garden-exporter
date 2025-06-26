@@ -49,6 +49,8 @@ class SCD4xSensor(Sensor):
                                COUNTER,
                                "The time of the last sensor update",)
 
+            self.sensor.start_periodic_measurement()
+
             return True
 
     def measure(self, metrics: Metrics) -> float:
