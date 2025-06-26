@@ -56,11 +56,16 @@ class SCD4xSensor(Sensor):
             "initialise must be called before measure."
 
         try:
-            co2, temperature, relative_humidity, timestamp = \
-                self.sensor.measure(blocking=False)
+            data = self.sensor.measure(blocking=False)
         except RuntimeError as e:
             print("Error reading SCD4X sensor:", e)
             return 1.0
+
+        if data is None:
+            # data not ready
+            return 1.0
+
+        co2, temperature, relative_humidity, timestamp = data
 
         metrics.set("bge_co2", "sensor=\"scd4x\"", co2)
         metrics.set("bge_temperature", "sensor=\"scd4x\"", temperature)
