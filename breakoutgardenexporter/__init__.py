@@ -24,4 +24,5 @@ from .metrics import Metrics, MetricType, COUNTER, GAUGE
 from .pm25 import PM25Sensor
 from .sensor_manager import SensorManager
 from .server import serve
+from .scd4x import SCD4xSensor
 from .sgp30 import SGP30Sensor
