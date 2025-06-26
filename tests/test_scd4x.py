@@ -27,7 +27,7 @@ class TestSCD4x(unittest.TestCase):
     def test_create_sensor(self, mock_scd4x):
         instance = Mock()
         mock_scd4x.return_value = instance
-        instance.self_test.side_effect = [True]
+        instance.self_test.side_effect = [None]
         instance.measure.return_value = (400, 25.0, 50.0, 1234567890)
 
         metrics = Metrics()
@@ -55,7 +55,7 @@ class TestSCD4x(unittest.TestCase):
     def test_self_test_fail(self, mock_scd4x):
         instance = Mock()
         mock_scd4x.return_value = instance
-        instance.self_test.side_effect = [False]
+        instance.self_test.side_effect = RuntimeError("Self-test failed")
 
         metrics = Metrics()
         sensor = SCD4xSensor()

@@ -34,8 +34,10 @@ class SCD4xSensor(Sensor):
         except OSError:
             return False
         else:
-            if not self.sensor.self_test():
-                print("SCD4X self-test failed.")
+            try:
+                self.sensor.self_test()
+            except RuntimeError as e:
+                print(f"SCD4X self-test failed. {e}")
                 return False
 
             metrics.add_metric("bge_co2",
