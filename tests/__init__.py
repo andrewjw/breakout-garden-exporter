@@ -20,4 +20,5 @@ from .test_icp10125 import TestICP10125
 from .test_metrics import TestMetrics
 from .test_pm25 import TestPM25
 from .test_sensor_manager import TestSensorManager
+from .test_scd4x import TestSCD4x
 from .test_sgp30 import TestSGP30

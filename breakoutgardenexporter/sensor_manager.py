@@ -24,9 +24,10 @@ from .icp10125 import ICP10125Sensor
 from .metrics import Metrics
 from .pm25 import PM25Sensor
 from .sensor import Sensor
+from .scd4x import SCD4xSensor
 from .sgp30 import SGP30Sensor
 
-SENSORS = [BME280Sensor, ICP10125Sensor, PM25Sensor, SGP30Sensor]
+SENSORS = [BME280Sensor, ICP10125Sensor, PM25Sensor, SCD4xSensor, SGP30Sensor]
 
 
 class SensorManager(threading.Thread):

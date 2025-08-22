@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.5.0"
+__version__ = "2.1.2"
 
 from .arguments import get_arguments
 from .bme280 import BME280Sensor
@@ -24,4 +24,5 @@ from .metrics import Metrics, MetricType, COUNTER, GAUGE
 from .pm25 import PM25Sensor
 from .sensor_manager import SensorManager
 from .server import serve
+from .scd4x import SCD4xSensor
 from .sgp30 import SGP30Sensor
