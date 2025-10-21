@@ -8,5 +8,5 @@ pimoroni-bme280==1.0.0
 smbus2==0.5.0
 wheel==0.45.1
 twine==6.2.0
-adafruit-circuitpython-pm25==2.1.21
+adafruit-circuitpython-pm25==2.1.22
 scd4x==0.0.2
