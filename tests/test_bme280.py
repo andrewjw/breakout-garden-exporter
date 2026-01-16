@@ -38,12 +38,9 @@ class TestBME280(unittest.TestCase):
         self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
-        self.assertIn(
-            "bge_pressure{sensor=\"bme280\"} 1000.000000", str(metrics))
-        self.assertIn(
-            "bge_temperature{sensor=\"bme280\"} 20.000000", str(metrics))
-        self.assertIn(
-            "bge_humidity{sensor=\"bme280\"} 65.000000", str(metrics))
+        self.assertIn('bge_pressure{sensor="bme280"} 1000.000000', str(metrics))
+        self.assertIn('bge_temperature{sensor="bme280"} 20.000000', str(metrics))
+        self.assertIn('bge_humidity{sensor="bme280"} 65.000000', str(metrics))
 
     @patch("breakoutgardenexporter.bme280.BME280")
     @patch("breakoutgardenexporter.bme280.SMBus")

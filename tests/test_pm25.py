@@ -29,18 +29,20 @@ if not hasattr(breakoutgardenexporter.pm25.board, "SCL"):
 if not hasattr(breakoutgardenexporter.pm25.board, "SDA"):
     breakoutgardenexporter.pm25.board.SDA = 0
 
-SAMPLE_DATA = {'pm10 standard': 2,
-               'pm25 standard': 3,
-               'pm100 standard': 4,
-               'pm10 env': 2,
-               'pm25 env': 3,
-               'pm100 env': 4,
-               'particles 03um': 678,
-               'particles 05um': 188,
-               'particles 10um': 22,
-               'particles 25um': 2,
-               'particles 50um': 0,
-               'particles 100um': 0}
+SAMPLE_DATA = {
+    "pm10 standard": 2,
+    "pm25 standard": 3,
+    "pm100 standard": 4,
+    "pm10 env": 2,
+    "pm25 env": 3,
+    "pm100 env": 4,
+    "particles 03um": 678,
+    "particles 05um": 188,
+    "particles 10um": 22,
+    "particles 25um": 2,
+    "particles 50um": 0,
+    "particles 100um": 0,
+}
 
 
 class TestPM25(unittest.TestCase):
@@ -57,14 +59,13 @@ class TestPM25(unittest.TestCase):
         self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
-        self.assertIn("bge_airqual_standard{sensor=\"pm25\",psize=\"1.0\"} 2",
-                      str(metrics))
-        self.assertIn("bge_airqual_environmental{sensor=\"pm25\","
-                      + "psize=\"2.5\"} 3",
-                      str(metrics))
-        self.assertIn("bge_airqual_particles{sensor=\"pm25\","
-                      + "psize=\"0.3um\"} 6780",
-                      str(metrics))
+        self.assertIn('bge_airqual_standard{sensor="pm25",psize="1.0"} 2', str(metrics))
+        self.assertIn(
+            'bge_airqual_environmental{sensor="pm25",' + 'psize="2.5"} 3', str(metrics)
+        )
+        self.assertIn(
+            'bge_airqual_particles{sensor="pm25",' + 'psize="0.3um"} 6780', str(metrics)
+        )
 
     @patch("breakoutgardenexporter.pm25.busio.I2C")
     @patch("breakoutgardenexporter.pm25.PM25_I2C")

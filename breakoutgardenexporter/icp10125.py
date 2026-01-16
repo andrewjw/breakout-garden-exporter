@@ -39,13 +39,12 @@ class ICP10125Sensor(Sensor):
             return True
 
     def measure(self, metrics: Metrics) -> float:
-        assert self.sensor is not None, \
-            "initialise must be called before measure."
+        assert self.sensor is not None, "initialise must be called before measure."
         pressure, temperature = self.sensor.measure()
         if pressure > 10000:
             pressure /= 100
 
-        metrics.set("bge_pressure", "sensor=\"icp10125\"", pressure)
-        metrics.set("bge_temperature", "sensor=\"icp10125\"", temperature)
+        metrics.set("bge_pressure", 'sensor="icp10125"', pressure)
+        metrics.set("bge_temperature", 'sensor="icp10125"', temperature)
 
         return 1.0

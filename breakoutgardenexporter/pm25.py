@@ -24,6 +24,8 @@ except NotImplementedError:
     class board:  # type: ignore
         SCL = 0
         SDA = 0
+
+
 import busio  # type: ignore
 from adafruit_pm25.i2c import PM25_I2C  # type: ignore
 
@@ -45,21 +47,26 @@ class PM25Sensor(Sensor):
         except (RuntimeError, OSError):
             return False
         else:
-            metrics.add_metric("bge_airqual_standard",
-                               GAUGE,
-                               "Air Quality counts in standardized units")
-            metrics.add_metric("bge_airqual_environmental",
-                               GAUGE,
-                               "Air Quality counts in environmental units")
-            metrics.add_metric("bge_airqual_particles",
-                               GAUGE,
-                               "Air Quality particle counts per 1L of air")
+            metrics.add_metric(
+                "bge_airqual_standard",
+                GAUGE,
+                "Air Quality counts in standardized units",
+            )
+            metrics.add_metric(
+                "bge_airqual_environmental",
+                GAUGE,
+                "Air Quality counts in environmental units",
+            )
+            metrics.add_metric(
+                "bge_airqual_particles",
+                GAUGE,
+                "Air Quality particle counts per 1L of air",
+            )
 
             return True
 
     def measure(self, metrics: Metrics) -> float:
-        assert self.sensor is not None, \
-            "initialise must be called before measure."
+        assert self.sensor is not None, "initialise must be called before measure."
 
         try:
             aqdata = self.sensor.read()
@@ -67,32 +74,53 @@ class PM25Sensor(Sensor):
             self.last_read += 1
             if self.last_read > 120:
                 for psize in [("1.0", "10"), ("2.5", "25"), ("10.0", "100")]:
-                    metrics.clear("bge_airqual_standard",
-                                  f"sensor=\"pm25\",psize=\"{psize[0]}\"")
-                    metrics.clear("bge_airqual_environmental",
-                                  f"sensor=\"pm25\",psize=\"{psize[0]}\"")
+                    metrics.clear(
+                        "bge_airqual_standard", f'sensor="pm25",psize="{psize[0]}"'
+                    )
+                    metrics.clear(
+                        "bge_airqual_environmental", f'sensor="pm25",psize="{psize[0]}"'
+                    )
 
-                for psize in [("0.3", "03"), ("0.5", "05"), ("1.0", "10"),
-                              ("2.5", "25"), ("5.0", "50"), ("10.0", "100")]:
-                    metrics.clear("bge_airqual_particles",
-                                  f"sensor=\"pm25\",psize=\"{psize[0]}um\"")
+                for psize in [
+                    ("0.3", "03"),
+                    ("0.5", "05"),
+                    ("1.0", "10"),
+                    ("2.5", "25"),
+                    ("5.0", "50"),
+                    ("10.0", "100"),
+                ]:
+                    metrics.clear(
+                        "bge_airqual_particles", f'sensor="pm25",psize="{psize[0]}um"'
+                    )
 
             return 1.0
 
         self.last_read = 0
 
         for psize in [("1.0", "10"), ("2.5", "25"), ("10.0", "100")]:
-            metrics.set("bge_airqual_standard",
-                        f"sensor=\"pm25\",psize=\"{psize[0]}\"",
-                        aqdata[f"pm{psize[1]} standard"])
-            metrics.set("bge_airqual_environmental",
-                        f"sensor=\"pm25\",psize=\"{psize[0]}\"",
-                        aqdata[f"pm{psize[1]} env"])
+            metrics.set(
+                "bge_airqual_standard",
+                f'sensor="pm25",psize="{psize[0]}"',
+                aqdata[f"pm{psize[1]} standard"],
+            )
+            metrics.set(
+                "bge_airqual_environmental",
+                f'sensor="pm25",psize="{psize[0]}"',
+                aqdata[f"pm{psize[1]} env"],
+            )
 
-        for psize in [("0.3", "03"), ("0.5", "05"), ("1.0", "10"),
-                      ("2.5", "25"), ("5.0", "50"), ("10.0", "100")]:
-            metrics.set("bge_airqual_particles",
-                        f"sensor=\"pm25\",psize=\"{psize[0]}um\"",
-                        aqdata[f"particles {psize[1]}um"]*10)
+        for psize in [
+            ("0.3", "03"),
+            ("0.5", "05"),
+            ("1.0", "10"),
+            ("2.5", "25"),
+            ("5.0", "50"),
+            ("10.0", "100"),
+        ]:
+            metrics.set(
+                "bge_airqual_particles",
+                f'sensor="pm25",psize="{psize[0]}um"',
+                aqdata[f"particles {psize[1]}um"] * 10,
+            )
 
         return 1.0

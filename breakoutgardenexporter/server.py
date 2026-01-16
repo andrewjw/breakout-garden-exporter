@@ -42,32 +42,35 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def send_index(self) -> None:
         self.send_response(200)
         self.end_headers()
-        self.wfile.write("""
+        self.wfile.write(
+            """
 <html>
 <head><title>Breakout Garden Exporter</title></head>
 <body>
 <h1>Breakout Garden Exporter</h1>
 <p><a href="/metrics">Metrics</a></p>
 </body>
-</html>""".encode("utf8"))
+</html>""".encode(
+                "utf8"
+            )
+        )
 
     def send_metrics(self) -> None:
         self.send_response(200)
         self.end_headers()
         self.wfile.write(str(self.metrics).encode("utf8"))
 
-    def log_request(self, code='-', size='-') -> None:
+    def log_request(self, code="-", size="-") -> None:
         if self.quiet:
             return
         else:
-            self.log_message('"%s" %s %s',
-                             self.requestline, str(code), str(size))
+            self.log_message('"%s" %s %s', self.requestline, str(code), str(size))
 
 
-def serve(metrics: Metrics,
-          args: argparse.Namespace) -> None:  # pragma: no cover
-    handler = cast(Callable[[Any, Any, http.server.HTTPServer],
-                            socketserver.BaseRequestHandler],
-                   Handler(metrics, args.quiet))
+def serve(metrics: Metrics, args: argparse.Namespace) -> None:  # pragma: no cover
+    handler = cast(
+        Callable[[Any, Any, http.server.HTTPServer], socketserver.BaseRequestHandler],
+        Handler(metrics, args.quiet),
+    )
     server = http.server.HTTPServer(args.bind, handler)
     server.serve_forever()

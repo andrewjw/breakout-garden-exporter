@@ -32,34 +32,29 @@ class SGP30Sensor(Sensor):
     def initialise(self, metrics: Metrics) -> bool:
         try:
             self.sensor = SGP30()
-            self.sensor.command('init_air_quality')
+            self.sensor.command("init_air_quality")
         except OSError:
             return False
         else:
-            metrics.add_metric("bge_equivalent_co2",
-                               GAUGE,
-                               "The equivalent co2 (ppm)")
-            metrics.add_metric("bge_voc",
-                               GAUGE,
-                               "The total VOC (ppb)")
+            metrics.add_metric("bge_equivalent_co2", GAUGE, "The equivalent co2 (ppm)")
+            metrics.add_metric("bge_voc", GAUGE, "The total VOC (ppb)")
 
             return True
 
     def measure(self, metrics: Metrics) -> float:
-        assert self.sensor is not None, \
-            "initialise must be called before measure."
+        assert self.sensor is not None, "initialise must be called before measure."
         result = self.sensor.get_air_quality()
 
-        if result.equivalent_co2 != 400 \
-           or result.total_voc != 0 \
-           or self.initial_readings >= 20:
+        if (
+            result.equivalent_co2 != 400
+            or result.total_voc != 0
+            or self.initial_readings >= 20
+        ):
             self.warmed_up = True
 
         if self.warmed_up:
-            metrics.set("bge_equivalent_co2",
-                        "sensor=\"sgp30\"",
-                        result.equivalent_co2)
-            metrics.set("bge_voc", "sensor=\"sgp30\"", result.total_voc)
+            metrics.set("bge_equivalent_co2", 'sensor="sgp30"', result.equivalent_co2)
+            metrics.set("bge_voc", 'sensor="sgp30"', result.total_voc)
         else:
             self.initial_readings += 1
 

@@ -40,22 +40,21 @@ class SCD4xSensor(Sensor):
                 print(f"SCD4X self-test failed. {e}")
                 return False
 
-            metrics.add_metric("bge_co2",
-                               GAUGE,
-                               "The co2 (ppm)")
+            metrics.add_metric("bge_co2", GAUGE, "The co2 (ppm)")
             metrics.add_metric("bge_temperature", GAUGE, "The temperature")
             metrics.add_metric("bge_humidity", GAUGE, "The humidity")
-            metrics.add_metric("bge_sensor_update",
-                               COUNTER,
-                               "The time of the last sensor update",)
+            metrics.add_metric(
+                "bge_sensor_update",
+                COUNTER,
+                "The time of the last sensor update",
+            )
 
             self.sensor.start_periodic_measurement()
 
             return True
 
     def measure(self, metrics: Metrics) -> float:
-        assert self.sensor is not None, \
-            "initialise must be called before measure."
+        assert self.sensor is not None, "initialise must be called before measure."
 
         try:
             data = self.sensor.measure(blocking=False)
@@ -69,9 +68,9 @@ class SCD4xSensor(Sensor):
 
         co2, temperature, relative_humidity, timestamp = data
 
-        metrics.set("bge_co2", "sensor=\"scd4x\"", co2)
-        metrics.set("bge_temperature", "sensor=\"scd4x\"", temperature)
-        metrics.set("bge_humidity", "sensor=\"scd4x\"", relative_humidity)
-        metrics.set("bge_sensor_update", "sensor=\"scd4x\"", timestamp)
+        metrics.set("bge_co2", 'sensor="scd4x"', co2)
+        metrics.set("bge_temperature", 'sensor="scd4x"', temperature)
+        metrics.set("bge_humidity", 'sensor="scd4x"', relative_humidity)
+        metrics.set("bge_sensor_update", 'sensor="scd4x"', timestamp)
 
         return 1.0
