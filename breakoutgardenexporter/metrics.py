@@ -35,10 +35,9 @@ GAUGE = MetricType("gauge")
 
 
 class Metric:
-    def __init__(self,
-                 metric_name: str,
-                 metric_type: MetricType,
-                 help_text: str) -> None:
+    def __init__(
+        self, metric_name: str, metric_type: MetricType, help_text: str
+    ) -> None:
         self.metric_name = metric_name
         self.metric_type = metric_type
         self.help_text = help_text
@@ -66,10 +65,9 @@ class Metrics:
     def __init__(self) -> None:
         self.metrics: Dict[str, Metric] = {}
 
-    def add_metric(self,
-                   metric_name: str,
-                   metric_type: MetricType,
-                   help_text: str) -> None:
+    def add_metric(
+        self, metric_name: str, metric_type: MetricType, help_text: str
+    ) -> None:
         self.metrics[metric_name] = Metric(metric_name, metric_type, help_text)
 
     def set(self, metric_name: str, tags: str, value: float) -> None:

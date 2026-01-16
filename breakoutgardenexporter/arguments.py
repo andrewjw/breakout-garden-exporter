@@ -18,12 +18,19 @@
 import argparse
 
 parser = argparse.ArgumentParser(
-    description='Exposes Prometheus metrics from sensors that are part '
-                + 'of Pimoroni\'s Breakout Garden family')
-parser.add_argument('-q', '--quiet', action="store_true",
-                    help="don't log HTTP requests")
-parser.add_argument('--bind', type=str, nargs='?', default="0.0.0.0:9101",
-                    help='the ip address and port to bind to. Default: *:9101')
+    description="Exposes Prometheus metrics from sensors that are part "
+    + "of Pimoroni's Breakout Garden family"
+)
+parser.add_argument(
+    "-q", "--quiet", action="store_true", help="don't log HTTP requests"
+)
+parser.add_argument(
+    "--bind",
+    type=str,
+    nargs="?",
+    default="0.0.0.0:9101",
+    help="the ip address and port to bind to. Default: *:9101",
+)
 
 
 def get_arguments(args) -> argparse.Namespace:

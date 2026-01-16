@@ -36,11 +36,10 @@ class TestSCD4x(unittest.TestCase):
         self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
+        self.assertIn('bge_co2{sensor="scd4x"} 400.000000', str(metrics))
         self.assertIn(
-            "bge_co2{sensor=\"scd4x\"} 400.000000", str(metrics))
-        self.assertIn(
-            "bge_sensor_update{sensor=\"scd4x\"} 1234567890.000000",
-            str(metrics))
+            'bge_sensor_update{sensor="scd4x"} 1234567890.000000', str(metrics)
+        )
 
     @patch("breakoutgardenexporter.scd4x.SCD4X")
     def test_missing_sensor(self, mock_scd4x):

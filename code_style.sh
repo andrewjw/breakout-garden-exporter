@@ -2,7 +2,7 @@
 
 set -e
 
-${PYCODESTYLE:-pycodestyle} bin/ breakoutgardenexporter/ tests/
+${BLACK:-black} bin/ breakoutgardenexporter/ tests/
 
 MYPYPATH=./stubs:$MYPYPATH mypy -m breakoutgardenexporter
 

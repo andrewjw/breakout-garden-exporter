@@ -18,6 +18,7 @@
 from typing import Optional
 
 from smbus2 import SMBus
+
 try:
     from bme280 import BME280
 except OSError:
@@ -45,22 +46,15 @@ class BME280Sensor(Sensor):
             return True
 
     def measure(self, metrics: Metrics) -> float:
-        assert self.sensor is not None, \
-            "initialise must be called before measure."
+        assert self.sensor is not None, "initialise must be called before measure."
 
         temperature = self.sensor.get_temperature()
         pressure = self.sensor.get_pressure()
         humidity = self.sensor.get_humidity()
         print(temperature, pressure, humidity)
 
-        metrics.set("bge_temperature",
-                    "sensor=\"bme280\"",
-                    temperature)
-        metrics.set("bge_pressure",
-                    "sensor=\"bme280\"",
-                    pressure)
-        metrics.set("bge_humidity",
-                    "sensor=\"bme280\"",
-                    humidity)
+        metrics.set("bge_temperature", 'sensor="bme280"', temperature)
+        metrics.set("bge_pressure", 'sensor="bme280"', pressure)
+        metrics.set("bge_humidity", 'sensor="bme280"', humidity)
 
         return 1.0

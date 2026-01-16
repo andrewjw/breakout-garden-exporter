@@ -33,8 +33,10 @@ class TestSGP30(unittest.TestCase):
     def test_create_sensor(self, mock_sgp30):
         instance = Mock()
         mock_sgp30.return_value = instance
-        instance.get_air_quality.side_effect = \
-            [MockSGP30Reading(400, 0), MockSGP30Reading(405, 5)]
+        instance.get_air_quality.side_effect = [
+            MockSGP30Reading(400, 0),
+            MockSGP30Reading(405, 5),
+        ]
 
         metrics = Metrics()
         sensor = SGP30Sensor()
@@ -43,10 +45,8 @@ class TestSGP30(unittest.TestCase):
 
         self.assertEqual(sensor.measure(metrics), 1.0)
         self.assertEqual(sensor.measure(metrics), 1.0)
-        self.assertIn(
-            "bge_equivalent_co2{sensor=\"sgp30\"} 405.000000", str(metrics))
-        self.assertIn(
-            "bge_voc{sensor=\"sgp30\"} 5.000000", str(metrics))
+        self.assertIn('bge_equivalent_co2{sensor="sgp30"} 405.000000', str(metrics))
+        self.assertIn('bge_voc{sensor="sgp30"} 5.000000', str(metrics))
 
     @patch("breakoutgardenexporter.sgp30.SGP30")
     def test_missing_sensor(self, mock_sgp30):

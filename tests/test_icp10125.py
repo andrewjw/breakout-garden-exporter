@@ -35,10 +35,8 @@ class TestICP10125(unittest.TestCase):
         self.assertTrue(sensor.initialise(metrics))
 
         self.assertEqual(sensor.measure(metrics), 1.0)
-        self.assertIn(
-            "bge_pressure{sensor=\"icp10125\"} 1001.500000", str(metrics))
-        self.assertIn(
-            "bge_temperature{sensor=\"icp10125\"} 25.500000", str(metrics))
+        self.assertIn('bge_pressure{sensor="icp10125"} 1001.500000', str(metrics))
+        self.assertIn('bge_temperature{sensor="icp10125"} 25.500000', str(metrics))
 
     @patch("breakoutgardenexporter.icp10125.ICP10125")
     def test_false_when_no_sensor(self, mock_icp10125):
