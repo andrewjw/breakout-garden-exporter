@@ -6,7 +6,7 @@ icp10125==1.0.0
 pimoroni-sgp30==0.0.2
 pimoroni-bme280==1.0.0
 smbus2==0.6.0
-wheel==0.46.2
+wheel==0.46.3
 twine==6.2.0
 adafruit-circuitpython-pm25==2.1.22
 scd4x==0.0.2
