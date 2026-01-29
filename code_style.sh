@@ -2,7 +2,7 @@
 
 set -e
 
-${BLACK:-black} bin/ breakoutgardenexporter/ tests/
+${BLACK:-black} .
 
 MYPYPATH=./stubs:$MYPYPATH mypy -m breakoutgardenexporter
 
