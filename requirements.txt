@@ -1,4 +1,4 @@
-coverage==7.13.3
+coverage==7.13.4
 black==26.1.0
 python-semantic-release==10.5.3
 mypy==1.19.1
