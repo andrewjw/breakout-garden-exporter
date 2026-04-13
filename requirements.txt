@@ -1,7 +1,7 @@
 coverage==7.13.5
 black==26.3.1
 python-semantic-release==10.5.3
-mypy==1.20.0
+mypy==1.20.1
 icp10125==1.0.0
 pimoroni-sgp30==0.0.2
 pimoroni-bme280==1.0.0
