@@ -53,6 +53,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def send_metrics(self) -> None:
         self.send_response(200)
+        self.send_header(
+            "content-type",
+            "text/plain; version=1.0.0; charset=utf-8; escaping=values",
+        )
         self.end_headers()
         self.wfile.write(str(self.metrics).encode("utf8"))
 
