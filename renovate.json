@@ -9,8 +9,12 @@
       "automerge": true
     },
     {
-      "matchManagers": ["github-actions"],
-      "matchDepNames": ["python"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "python"
+      ],
       "matchUpdateTypes": ["minor"],
       "automerge": false
     }
