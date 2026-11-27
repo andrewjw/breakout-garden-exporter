@@ -2,6 +2,29 @@
 
 <!-- version list -->
 
+## v2.2.1 (2026-11-27)
+
+### Bug Fixes
+
+- Send correct content type for metrics.
+  ([`64ee51a`](https://github.com/andrewjw/breakout-garden-exporter/commit/64ee51a62d92039354cf8f8f1ca692ecfa5ce67d))
+
+### Chores
+
+- Don't automerge Python version changes.
+  ([`3d646b0`](https://github.com/andrewjw/breakout-garden-exporter/commit/3d646b00d2d90c131f571d5a429aadcd0603dd8e))
+
+- Fix updating of changelog in the repo.
+  ([`d9c6c00`](https://github.com/andrewjw/breakout-garden-exporter/commit/d9c6c00291c58b32f8a9094c48361b1c8a5a606c))
+
+- Switch to black for code style.
+  ([#132](https://github.com/andrewjw/breakout-garden-exporter/pull/132),
+  [`7422ec1`](https://github.com/andrewjw/breakout-garden-exporter/commit/7422ec12e6a06854dddd6c7255fb91f550c997b7))
+
+- Update code style to Black 26.
+  ([`b4b7523`](https://github.com/andrewjw/breakout-garden-exporter/commit/b4b7523ef78ac10ed2825b969517c06e278d0194))
+
+
 ## v2.2.0 (2026-01-16)
 
 ### Chores
