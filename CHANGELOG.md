@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.3.0 (2026-11-27)
+
+### Chores
+
+- Fix style.
+  ([`94a0fb3`](https://github.com/andrewjw/breakout-garden-exporter/commit/94a0fb3299176d61fef223eefc9c5401404dfa6a))
+
+### Features
+
+- Add support from Python 3.15 and drop 3.10.
+  ([`3c2b7a3`](https://github.com/andrewjw/breakout-garden-exporter/commit/3c2b7a3aa41fd91668edec890971b0459964de18))
+
+
 ## v2.2.1 (2026-11-27)
 
 ### Bug Fixes
